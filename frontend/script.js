@@ -9,8 +9,11 @@ document.getElementById('trackDepositsBtn').addEventListener('click', async () =
         const response = await fetch('http://localhost:3000/track');
 
         if (response.ok) {
-            notification.textContent = 'Tracking deposits...';
-            const depositsResponse = await fetch('http://localhost:3000/deposits'); 
+            const result = await response.json(); // Get JSON response
+            notification.textContent = result.message; // Display success message
+            
+            // Fetch recorded deposits after tracking
+            const depositsResponse = await fetch('http://localhost:3000/deposits');
             const deposits = await depositsResponse.json();
 
             deposits.forEach(deposit => {
@@ -19,7 +22,8 @@ document.getElementById('trackDepositsBtn').addEventListener('click', async () =
                 depositList.appendChild(li);
             });
         } else {
-            notification.textContent = 'Error tracking deposits.';
+            const errorResponse = await response.json(); // Get JSON error response
+            notification.textContent = `Error tracking deposits: ${errorResponse.error}`; // Display error message
         }
     } catch (error) {
         notification.textContent = 'Error: ' + error.message;
