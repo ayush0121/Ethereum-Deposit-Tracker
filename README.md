@@ -1,40 +1,43 @@
 # Ethereum Deposit Tracker
 
-## Overview
-
-The Ethereum Deposit Tracker is a Node.js application that monitors the Beacon Deposit Contract for incoming ETH deposits. It records deposit details, sends notifications via Telegram, and visualizes data using Grafana.
+The Ethereum Deposit Tracker is a robust application that monitors and records ETH deposits on the Beacon Deposit Contract. It leverages Ethereum RPC methods to interact with the blockchain and capture deposit transactions in real-time.
 
 ## Table of Contents
 
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Environment Configuration](#environment-configuration)
-- [Usage Instructions](#usage-instructions)
-- [Code Comments](#code-comments)
+- [Configuration](#configuration)
+- [Usage](#usage)
+  - [Running the Server](#running-the-server)
+  - [Triggering Deposit Tracking](#triggering-deposit-tracking)
+  - [Viewing Recorded Deposits](#viewing-recorded-deposits)
+- [Dockerization](#dockerization)
+- [Error Handling and Logging](#error-handling-and-logging)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
 
-- Monitors the Beacon Deposit Contract for incoming deposits.
-- Records deposit details (amount, sender address, timestamp, etc.).
-- Sends notifications via Telegram for new deposits.
-- Visualizes deposit data using Grafana.
+- Monitors the Beacon Deposit Contract for incoming ETH deposits
+- Records deposit details such as block number, timestamp, sender address, amount, transaction hash, and public key
+- Handles multiple deposits made in a single transaction, including internal transactions
+- Logs deposit data to a file for historical records
+- Sends notifications via Telegram for new deposits
+- Implements comprehensive error handling for API calls and RPC interactions
+- Includes logging mechanisms to track errors and important events
 
 ## Prerequisites
-
-Before you begin, ensure you have the following installed:
 
 - Node.js (v14 or higher)
 - npm (Node package manager)
 - An Ethereum wallet with access to the Sepolia test network
 - Access to a Telegram account to create a bot for notifications
-- An InfluxDB instance for data storage (optional for Grafana visualization)
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone 
+   git clone https://github.com/your-username/ethereum-deposit-tracker.git
    cd ethereum-deposit-tracker

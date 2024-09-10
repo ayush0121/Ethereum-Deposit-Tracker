@@ -1,9 +1,8 @@
-// tracker.js
 const { getDeposits } = require('./fetchDeposits');
 const fs = require('fs');
 const path = require('path');
 const web3 = require('./rpc');
-const logger = require('./logger'); // Import the logger
+const logger = require('./logger'); 
 
 async function trackDeposits(blockNumber) {
     try {
@@ -20,7 +19,6 @@ async function trackDeposits(blockNumber) {
                 input: deposit.input
             };
 
-            // Append deposit data to the log file
             fs.appendFileSync(path.join(__dirname, 'deposits.log'), JSON.stringify(depositData) + '\n');
             logger.info(`Deposit recorded: ${JSON.stringify(depositData)}`); // Log the deposit details
         });

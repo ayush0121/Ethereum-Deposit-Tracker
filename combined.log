@@ -1,1 +1,4 @@
 {"level":"info","message":"Server running on port 3000","timestamp":"2024-09-09T20:46:08.359Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-09-10T05:19:52.156Z"}
+{"level":"error","message":"Error fetching deposits: ENOENT: no such file or directory, open 'C:\\Users\\Ayush\\OneDrive\\Desktop\\ethereum-deposit-tracker\\deposits.log'","timestamp":"2024-09-10T05:20:30.393Z"}
+{"level":"error","message":"Error fetching deposits: ENOENT: no such file or directory, open 'C:\\Users\\Ayush\\OneDrive\\Desktop\\ethereum-deposit-tracker\\deposits.log'","timestamp":"2024-09-10T05:20:31.355Z"}

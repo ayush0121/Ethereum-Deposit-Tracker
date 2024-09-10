@@ -1,6 +1,5 @@
-// fetchDeposits.js
 const web3 = require('./rpc');
-const logger = require('./logger'); // Import the logger
+const logger = require('./logger'); 
 const BEACON_CONTRACT_ADDRESS = '0x00000000219ab540356cBB839Cbe05303d7705Fa';
 const DEPOSIT_EVENT_SIGNATURE = web3.utils.sha3('DepositEvent(uint256,address,uint256)');
 
@@ -9,7 +8,6 @@ async function getDeposits(blockNumber) {
         const block = await web3.eth.getBlock(blockNumber, true);
         const transactions = block.transactions;
 
-        // Fetch logs for the deposit event
         const logs = await web3.eth.getPastLogs({
             fromBlock: blockNumber,
             toBlock: blockNumber,
@@ -17,7 +15,6 @@ async function getDeposits(blockNumber) {
             topics: [DEPOSIT_EVENT_SIGNATURE]
         });
 
-        // Process logs to extract deposit details
         const deposits = logs.map(log => {
             const decoded = web3.eth.abi.decodeLog([
                 { type: 'uint256', name: 'amount' },
@@ -31,14 +28,14 @@ async function getDeposits(blockNumber) {
                 sender: decoded.sender,
                 amount: web3.utils.fromWei(decoded.amount, 'ether'),
                 hash: log.transactionHash,
-                input: log.input // This may contain the public key or other data
+                input: log.input 
             };
         });
 
         return deposits;
     } catch (error) {
         logger.error(`Error fetching deposits for block ${blockNumber}: ${error.message}`);
-        throw error; // Re-throw the error after logging it
+        throw error; 
     }
 }
 

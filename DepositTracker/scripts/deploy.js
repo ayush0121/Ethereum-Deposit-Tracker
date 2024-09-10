@@ -1,12 +1,10 @@
-// scripts/deploy.js
 async function main() {
     const DepositTracker = await ethers.getContractFactory("DepositTracker");
-    console.log("Deploying DepositTracker...");
+    console.log("Deploying DepositTracker");
 
-    const depositTracker = await DepositTracker.deploy(); // Deploy the contract
-    // No need to call .deployed() here
+    const depositTracker = await DepositTracker.deploy(); 
 
-    console.log("DepositTracker deployed to:", depositTracker.address); // Log the deployed contract address
+    console.log("DepositTracker deployed to:", depositTracker.address); 
 }
 
 main()
